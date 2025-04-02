@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        h1 {color: black; text-align: center;}
+        h2 {color: black; text-align: center;}
+        .container {color: black;}
+        body {
+            background-image: url('bg.jpg');
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>𝙱𝙼𝙸 𝚌𝚊𝚕𝚌𝚞𝚕𝚊𝚝𝚘𝚛 📊</h1>
+
+<div class="container">
+
+    <h2>𝚒𝚗𝚙𝚞𝚝 𝚢𝚘𝚞𝚛 𝚠𝚎𝚒𝚐𝚑𝚝 𝚊𝚗𝚍 𝚑𝚎𝚒𝚐𝚑𝚝</h2>
+
+    <br>
+
+
+    <input type="number" class="form-control" placeholder="Weight (kg)" id="weight">
+    <br>
+
+    <input type="number" class="form-control" placeholder="Height (m)" id="height">
+    <br>
+
+    <button type="submit" class="btn btn-success" onclick="calculateBMI()">𝚌𝚊𝚕𝚌𝚞𝚕𝚊𝚝𝚎 𝙱𝙼𝙸</button>
+
+    <div id="result" class="mt-4"></div>
+
+</div>
+
+<script>
+    function calculateBMI() {
+      
+        var weight = parseFloat(document.getElementById("weight").value);
+        var height = parseFloat(document.getElementById("height").value);
+
+        if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+            document.getElementById("result").innerHTML = "Please enter valid weight and height.";
+            return;
+        }
+
+        var bmi = weight / (height * height);
+
+        var resultText = "Your BMI is " + bmi.toFixed(2) + ". ";
+
+        if (bmi < 18.5) {
+            resultText += "You are underweight.";
+        } else if (bmi >= 18.5 && bmi < 24.9) {
+            resultText += "You have a normal weight.";
+        } else if (bmi >= 25 && bmi < 29.9) {
+            resultText += "You are overweight.";
+        } else {
+            resultText += "You are obese.";
+        }
+
+       
+        document.getElementById("result").innerHTML = resultText;
+    }
+</script>
+
+</body>
+</html>
+
+
